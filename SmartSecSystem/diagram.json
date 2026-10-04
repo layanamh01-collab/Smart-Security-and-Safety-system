@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "author": "layan hemaida",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": -4.76, "attrs": {} },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": -149.6,
+      "left": -180.18,
+      "attrs": {}
+    },
+    { "type": "wokwi-slide-switch", "id": "sw1", "top": -101.2, "left": -64.1, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -230.1,
+      "left": 4.2,
+      "attrs": { "temperature": "23.8" }
+    },
+    { "type": "wokwi-led", "id": "led1", "top": 44.4, "left": 128.6, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 44.4,
+      "left": -111.4,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -102.2,
+      "left": 48.2,
+      "rotate": 180,
+      "attrs": { "color": "red", "xray": "1" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 31.2,
+      "left": -219,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:SDA", "esp:4", "green", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.3", "black", [ "v0" ] ],
+    [ "sw1:1", "esp:14", "orange", [ "v0" ] ],
+    [ "sw1:3", "esp:GND.3", "orange", [ "v0" ] ],
+    [ "bz1:2", "esp:26", "red", [ "v0" ] ],
+    [ "bz1:1", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:A", "esp:27", "blue", [ "v0" ] ],
+    [ "led1:C", "esp:GND.3", "blue", [ "v0" ] ],
+    [ "led2:A", "esp:25", "magenta", [ "v0" ] ],
+    [ "led2:C", "esp:GND.1", "magenta", [ "v0" ] ],
+    [ "btn1:1.l", "esp:GND.2", "white", [ "h0" ] ],
+    [ "btn1:2.r", "esp:32", "white", [ "h0" ] ],
+    [ "pir1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pir1:OUT", "esp:13", "green", [ "v0" ] ],
+    [ "pir1:GND", "esp:GND.2", "blue", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
